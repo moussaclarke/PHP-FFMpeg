@@ -26,4 +26,19 @@ class AudioFilters
 
         return $this;
     }
+
+    /**
+     * Clips (cuts) the audio.
+     *
+     * @param TimeCode $start
+     * @param TimeCode $duration
+     *
+     * @return AudioFilters
+     */
+    public function cut($start, $duration = null)
+    {
+        $this->media->addFilter(new AudioCutFilter($start, $duration));
+
+        return $this;
+    }
 }
